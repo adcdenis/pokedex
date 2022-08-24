@@ -7,10 +7,12 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         ".vscode": true,
-        "node_modules": true
+        "node_modules": true,
+        "src/app/service/poke-api.service.spec.ts": true
     },
     "hide-files.files": [
         ".vscode",
-        "node_modules"
+        "node_modules",
+        "src/app/service/poke-api.service.spec.ts"
     ]
 }
