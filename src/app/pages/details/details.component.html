@@ -3,7 +3,7 @@
 
 <main>
 
-  <ng-template [ngIf]="">
+  <ng-template [ngIf]="isLoading">
     <section class="pokemon__names">
       <h1 class="slideInLeft">{{pokemon[0].name}}</h1>
       <h2 class="slideInRight">{{pokemon[1].names[0].name}}</h2>
@@ -19,7 +19,7 @@
       <article class="pokemon__status__statistics fadeIn">
         <section>
           <h3>Estatísticas</h3>
-
+          <br>
           <ol>
             <li *ngFor="let value of pokemon[0].stats">
                 {{ value.stat.name }}
@@ -38,10 +38,10 @@
     </section>
   </ng-template>
 
-  <!-- <img
+  <img
     src="assets/error.png"
     alt="Deu erro na mostragem do pokemon"
     width="100%"
     *ngIf="apiError"
-  > -->
+  >
 </main>
