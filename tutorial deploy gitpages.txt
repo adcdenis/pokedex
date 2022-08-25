@@ -1,0 +1,10 @@
+--para gerar build para o github pages
+
+ng build --configuration production --aot --base-href="/pokedex/"
+
+angular-cli-ghpages --dir=dist/pokedex
+
+
+--------------------
+
+https://adcdenis.github.io/pokedex/
