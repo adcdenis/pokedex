@@ -1,11 +1,18 @@
-@import '../../../config-scss/rem-calc.scss';
-
 :host {
-	header {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0 1rem;
 
-		padding: rem-calc(40) 0;
-	}
+    .logo {
+      height: 3.5rem;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
 }

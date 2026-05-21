@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { PokeHeaderComponent } from '../../shared/poke-header/poke-header.component';
+import { PokeListComponent } from '../../shared/poke-list/poke-list.component';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [PokeHeaderComponent, PokeListComponent],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class HomeComponent {}

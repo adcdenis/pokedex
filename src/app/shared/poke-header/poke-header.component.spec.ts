@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PokeHeaderComponent } from './poke-header.component';
 
 describe('PokeHeaderComponent', () => {
@@ -8,9 +7,8 @@ describe('PokeHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PokeHeaderComponent ]
-    })
-    .compileComponents();
+      imports: [PokeHeaderComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PokeHeaderComponent);
     component = fixture.componentInstance;

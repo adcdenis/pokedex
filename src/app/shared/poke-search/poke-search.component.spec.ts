@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PokeSearchComponent } from './poke-search.component';
 
 describe('PokeSearchComponent', () => {
@@ -8,9 +7,8 @@ describe('PokeSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PokeSearchComponent ]
-    })
-    .compileComponents();
+      imports: [PokeSearchComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PokeSearchComponent);
     component = fixture.componentInstance;

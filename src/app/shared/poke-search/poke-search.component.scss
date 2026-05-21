@@ -1,28 +1,64 @@
-@import '../../../config-scss/rem-calc.scss';
-
 :host {
-	form {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+  display: block;
+  margin-bottom: 1.5rem;
 
-		padding: rem-calc(15) rem-calc(20);
-		background-color: rgba(255, 255, 255, 0.2);
+  form {
+    width: 100%;
+  }
 
-		border-radius: rem-calc(10);
+  .search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
 
-		input {
-			width: 95%;
-			background: none;
-			border: none;
+    &:focus-within {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    }
+  }
 
-			font-size: rem-calc(18);
+  .search-icon {
+    color: rgba(255, 255, 255, 0.7);
+    flex-shrink: 0;
+  }
 
-			color: var(--branco);
+  input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #fff;
+    font-family: inherit;
 
-			&::placeholder {
-				color: var(--branco);
-			}
-		}
-	}
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  .clear-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    flex-shrink: 0;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
 }

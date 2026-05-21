@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'poke-header',
+  standalone: true,
   templateUrl: './poke-header.component.html',
-  styleUrls: ['./poke-header.component.scss']
+  styleUrls: ['./poke-header.component.scss'],
 })
-export class PokeHeaderComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class PokeHeaderComponent {}

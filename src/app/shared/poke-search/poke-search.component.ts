@@ -1,19 +1,23 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'poke-search',
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './poke-search.component.html',
   styleUrls: ['./poke-search.component.scss'],
 })
-export class PokeSearchComponent implements OnInit {
-  @Output() emmitSearch: EventEmitter<string> = new EventEmitter();
+export class PokeSearchComponent {
+  @Output() searchChange = new EventEmitter<string>();
+  searchTerm = '';
 
-  constructor() {}
+  onSearch(): void {
+    this.searchChange.emit(this.searchTerm);
+  }
 
-  ngOnInit(): void {}
-
-  public search(valor: string) {
-    console.log(valor)
-    this.emmitSearch.emit(valor);
+  clearSearch(): void {
+    this.searchTerm = '';
+    this.searchChange.emit('');
   }
 }

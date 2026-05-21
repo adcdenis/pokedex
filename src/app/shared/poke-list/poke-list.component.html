@@ -1,21 +1,47 @@
-<poke-search (emmitSearch)="recebendoValor($event)"></poke-search>
-<section class="listagem">
-  <ng-template ngFor let-pokemon [ngForOf]="allPokemons">
-    <a [routerLink]="['details', pokemon.status.id]" class="pokemon" *ngIf="pokemon.status">
-      <section class="pokemon__status">
-        <h2>{{pokemon.name}}-{{pokemon.status.id}}</h2>
+<poke-search (searchChange)="onSearch($event)"></poke-search>
 
-        <ul>
-          <li *ngFor="let i of pokemon.status.types">
-            {{i.type.name}}
-          </li>
-        </ul>
-      </section>
-      <section class="pokemon__image">
-        <img [src]="pokemon.status.sprites.other.dream_world.front_default" alt="{{pokemon.name}}">
-      </section>
-    </a>
-  </ng-template>
-
-</section>
-<img src="assets/error.png" alt="Deu erro na mostragem do pokemon" width="100%" *ngIf="apiError">
+@if (isLoading()) {
+  <section class="listagem">
+    @for (i of [1,2,3,4,5,6,7,8]; track i) {
+      <div class="pokemon skeleton"></div>
+    }
+  </section>
+} @else if (apiError()) {
+  <div class="error-state">
+    <img src="assets/error.png" alt="Erro ao carregar Pokémon" />
+    <p>Ops! Não foi possível carregar os Pokémon.</p>
+  </div>
+} @else {
+  <section class="listagem">
+    @for (pokemon of allPokemons(); track pokemon.name) {
+      @if (pokemon.status) {
+        <a
+          [routerLink]="['details', pokemon.status.id]"
+          class="pokemon"
+          [style.--card-gradient]="getTypeColor(pokemon.status.types[0].type.name || 'normal').background"
+        >
+          <div class="pokemon__id">#{{ pokemon.status.id | number:'3.0' }}</div>
+          <section class="pokemon__info">
+            <h2>{{ pokemon.name }}</h2>
+            <ul>
+              @for (t of pokemon.status.types; track t.slot) {
+                <li
+                  [style.background]="getTypeColor(t.type.name).background"
+                  [style.color]="getTypeColor(t.type.name).color"
+                >
+                  {{ t.type.name }}
+                </li>
+              }
+            </ul>
+          </section>
+          <section class="pokemon__image">
+            <img
+              [src]="pokemon.status.sprites.other.dream_world.front_default || pokemon.status.sprites.other['official-artwork'].front_default || pokemon.status.sprites.front_default"
+              [alt]="pokemon.name"
+            />
+          </section>
+        </a>
+      }
+    }
+  </section>
+}
